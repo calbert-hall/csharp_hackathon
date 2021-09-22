@@ -47,8 +47,10 @@ namespace ApplitoolsTutorial
 			// Initialize eyes Configuration
 			Configuration config = new Configuration();
 
-			// You can get your api key from the Applitools dashboard. It's also recommended to set this to an environment variable. 
-			config.SetApiKey("");
+
+			// You can get your api key from the Applitools dashboard. It's also recommended to set this to an environment variable.
+			//TODO set your API key here!
+			config.SetApiKey("VJMt4z4djBoqW40fclJgEpLGuwGppgZ98m5wtUuWhru0110");
 
 			// create a new batch info instance and set it to the configuration
 			config.SetBatch(new BatchInfo("Support C# Batch"));
@@ -78,7 +80,8 @@ namespace ApplitoolsTutorial
 			{
 
 				// Navigate to the url we want to test
-				webDriver.Url = "http://google.com//"; // "file:///Users/casey/Desktop/Saved_Webpages/Google_dotdom.htm";  //   /Users/casey/Downloads/Rocket Pro TPO_mkonkolowicz.html";//https://demo.applitools.com";
+				webDriver.Url = "https://demo.applitools.com/";
+				//	"http://google.com//";
 
 				// Call Open on eyes to initialize a test session
 				eyes.Open(webDriver, "Support C# App", "Ufg smoke test", new Size(800, 600));

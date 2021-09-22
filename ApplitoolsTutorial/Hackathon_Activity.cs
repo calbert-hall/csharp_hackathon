@@ -10,7 +10,7 @@ using ScreenOrientation = Applitools.VisualGrid.ScreenOrientation;
 
 namespace ApplitoolsTutorial
 {
-	public class HackathonSolution
+	public class HackathonActivity
     {
 		public const String ApplifashionV1 = "https://demo.applitools.com/gridHackathonV1.html";
 		public const String ApplifashionDev = "https://demo.applitools.com/tlcHackathonDev.html";
@@ -27,11 +27,11 @@ namespace ApplitoolsTutorial
 		 * Useful Selectors for navigating in the exercise.
 		 */
 
-		public static By blackColorFilter = By.Id("SPAN__checkmark__107");
-		public static By filterButton = By.Id("filterBtn");
-		public static By blackShoesImage = By.XPath("/html/body/div[1]/main/div/div/div/div[4]/div[1]/div/figure/a/img");
+		public By blackColorFilter = By.Id("SPAN__checkmark__107");
+		public By filterButton = By.Id("filterBtn");
+		public By blackShoesImage = By.XPath("/html/body/div[1]/main/div/div/div/div[4]/div[1]/div/figure/a/img");
 
-		public static void simulateDynamicContent(ref IWebDriver driver)
+		public void simulateDynamicContent(ref IWebDriver driver)
 		{
 			IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
 
@@ -41,7 +41,7 @@ namespace ApplitoolsTutorial
 		}
 
 		
-		public static void Main(string[] args)
+		public void Main(string[] args)
 		{
 			// Create a new chrome web driver
 			IWebDriver webDriver = new ChromeDriver();
@@ -69,7 +69,7 @@ namespace ApplitoolsTutorial
 
 		}
 
-		public static void SetUp(Eyes eyes)
+		public void SetUp(Eyes eyes)
 		{
 
 			// Initialize eyes Configuration
@@ -83,23 +83,14 @@ namespace ApplitoolsTutorial
 
 			// Add browsers with different viewports
 			config.AddBrowser(800, 600, BrowserType.CHROME);
-			config.AddBrowser(700, 500, BrowserType.FIREFOX);
-			//config.AddBrowser(1600, 1200, BrowserType.IE_11);
-			//config.AddBrowser(1024, 768, BrowserType.EDGE_CHROMIUM);
-			//config.AddBrowser(800, 600, BrowserType.SAFARI);
-
-			// Add mobile emulation devices in Portrait mode
-			//config.AddDeviceEmulation(DeviceName.iPhone_X, ScreenOrientation.Portrait);
-			//config.AddDeviceEmulation(DeviceName.Pixel_2, ScreenOrientation.Portrait);
-
-			eyes.SetLogHandler(new FileLogHandler("/Users/casey/Desktop/Selenium_C#/tutorial-selenium-csharp-ultrafastgrid/eyes.log", true, true));
+			//TODO set additional browser and viewport and device combinaitons
 
 			// Set the configuration object to eyes
 			eyes.SetConfiguration(config);
 
 		}
 
-		public static void UltraFastTest(IWebDriver driver, Eyes eyes)
+		public void UltraFastTest(IWebDriver driver, Eyes eyes)
 		{
 
 			try
@@ -136,15 +127,7 @@ namespace ApplitoolsTutorial
 				}
 				eyes.Check(Target.Window().Fully().WithName("Main Page"));
 
-				// Filter by black
-				driver.FindElement(blackColorFilter).Click();
-				driver.FindElement(filterButton).Click();
-
-				eyes.Check(Target.Window().Fully().WithName("Black Shoes Filter"));
-
-				driver.FindElement(blackShoesImage).Click();
-
-				eyes.Check(Target.Window().Fully().WithName("Air x Night"));
+				//TODO fill in your Applitools tests!
 
 				// End the test.
 				eyes.CloseAsync();
@@ -158,7 +141,7 @@ namespace ApplitoolsTutorial
 
 		}
 
-		 static void TearDown(IWebDriver webDriver, VisualGridRunner runner)
+		private void TearDown(IWebDriver webDriver, VisualGridRunner runner)
 		{
 			// Close the browser
 			webDriver.Quit();
